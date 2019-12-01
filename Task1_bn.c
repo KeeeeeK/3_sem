@@ -28,6 +28,7 @@ int main()
       case -1:
         perror ("fork"); /* an error occurred */
         exit(1); /*exit parent process*/
+        break;
       case 0:
         //child
         set_s = (char**)malloc(N*sizeof(char*));
@@ -49,12 +50,13 @@ int main()
         }
 
         free(set_s);
+        break;
       default:
         //parent
         status = 0;
         waitpid(pid, &status, 0);
         printf("ret code: %d\n", WEXITSTATUS(status));
-
+        break;
     }
   }
   return 0;
